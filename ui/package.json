@@ -1,0 +1,42 @@
+{
+  "name": "decash",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dynamic-labs/ethereum": "2.0.7",
+    "@dynamic-labs/sdk-react-core": "2.0.7",
+    "@dynamic-labs/wagmi-connector": "2.0.7",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "@tanstack/react-query": "^5.51.1",
+    "@types/node": "20.5.4",
+    "@types/react": "18.2.25",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "eslint": "8.47.0",
+    "eslint-config-next": "14.2.3",
+    "framer-motion": "^11.3.2",
+    "lucide-react": "^0.408.0",
+    "next": "14.2.3",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "5.1.6",
+    "viem": "2.12.1",
+    "wagmi": "2.9.6"
+  },
+  "devDependencies": {
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "tailwindcss": "^3.4.3"
+  }
+}
