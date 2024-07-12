@@ -17,7 +17,7 @@ const sidebars = {
     {
       type: 'html',
       className: 'sidebar-title',
-      value: 'Welcome',
+      value: 'DECASH DOCUMENTATION',
       defaultStyle: true,
     },
     'welcome',
