@@ -3,7 +3,7 @@ slug: /
 ---
 
 
-# Welcome to Decash 
+# Welcome to DeCash 
 
 Nillion is a secure computation network that decentralizes trust for high value data in the same way that blockchains decentralized transactions.
 
