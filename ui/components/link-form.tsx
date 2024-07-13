@@ -37,17 +37,16 @@ export default function LinkForm() {
     const max = Number.MAX_SAFE_INTEGER;
     const id = Math.floor(Math.random() * (max - min + 1)) + min;
     setLinkId(id);
-
+    
     try {
       const tx = await createPaymentLink({
         address: linksContractAddress,
         abi: linksContractABI,
         functionName: 'createPaymentLink',
-        args: [linkId],
+        args: [linkId, 0, false],
         value: parseUnits(tokenAmount.toString(), 18)
       });
       setTransactionDetails(tx);
-      console.log(tx);
     } catch (err) {
       console.error(err);
     }
