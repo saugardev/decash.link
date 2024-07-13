@@ -1,39 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDownIcon, ChevronRightIcon, XIcon } from "lucide-react";
 import CurrencyConverter from "./currency-converter";
 import { Button } from "./ui/button";
 import { FadeText } from "./magicui/fade-text";
 import { AnimatePresence } from "framer-motion";
-import { useWriteContract } from "wagmi";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { linksContractABI, linksContractAddress } from "@/config/constants";
+import { parseUnits } from "viem";
 
 export default function LinkForm() {
+  const { data: hash, writeContractAsync: createPaymentLink, isPending: isCreatingLink } = useWriteContract();
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [step, setStep] = useState(0);
   const [usdAmount, setUsdAmount] = useState<number>(0);
   const [tokenAmount, setTokenAmount] = useState<number>(0);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async (e: any) => {
     setOverlayVisible(true);
+    e.preventDefault();
+
+    try {
+      const tx = await createPaymentLink({
+        address: linksContractAddress,
+        abi: linksContractABI,
+        functionName: 'createPaymentLink',
+        args: [3],
+        value: parseUnits(tokenAmount.toString(), 18)
+      });
+      console.log(tx);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleCloseOverlay = () => {
     setOverlayVisible(false);
   };
 
-  const nextStep = () => {
-    setStep((prev) => (prev + 1) % 3);
-  };
-
   const texts = ["Waiting for confirmation", "Confirming", "Transaction confirmed"];
-  const currentText = texts[step];
+  let currentText = texts[0];
+
+  if (isConfirming) {
+    currentText = texts[1];
+  } else if (isConfirmed) {
+    currentText = texts[2];
+  }
 
   const handleValueChange = (usdAmount: number, tokenAmount: number) => {
     setUsdAmount(usdAmount);
     setTokenAmount(tokenAmount);
   };
-
-  const { writeContractAsync: createPaymentLink } = useWriteContract();
 
   return (
     <section className="mx-auto my-10 flex flex-col items-center">
@@ -86,7 +103,6 @@ export default function LinkForm() {
                 </svg>
                 <span className="sr-only">Loading...</span>
               </div>
-              <Button onClick={nextStep}>Next Step</Button>
             </div>
           </div>        
         </div>        
