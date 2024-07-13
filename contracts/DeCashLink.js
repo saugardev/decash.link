@@ -1,5 +1,10 @@
 export default [
     {
+        inputs: [],
+        stateMutability: "nonpayable",
+        type: "constructor",
+    },
+    {
         anonymous: false,
         inputs: [
             {
@@ -45,9 +50,34 @@ export default [
                 name: "amount",
                 type: "uint256",
             },
+            {
+                indexed: false,
+                internalType: "uint256",
+                name: "targetPrice",
+                type: "uint256",
+            },
+            {
+                indexed: false,
+                internalType: "bool",
+                name: "hasTarget",
+                type: "bool",
+            },
         ],
         name: "PaymentLinkCreated",
         type: "event",
+    },
+    {
+        inputs: [],
+        name: "chronicle",
+        outputs: [
+            {
+                internalType: "contract IChronicle",
+                name: "",
+                type: "address",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
     },
     {
         inputs: [
@@ -73,6 +103,16 @@ export default [
                 internalType: "uint256",
                 name: "linkId",
                 type: "uint256",
+            },
+            {
+                internalType: "uint256",
+                name: "targetPrice",
+                type: "uint256",
+            },
+            {
+                internalType: "bool",
+                name: "hasTarget",
+                type: "bool",
             },
         ],
         name: "createPaymentLink",
@@ -209,6 +249,42 @@ export default [
                 internalType: "bool",
                 name: "claimed",
                 type: "bool",
+            },
+            {
+                internalType: "uint256",
+                name: "targetPrice",
+                type: "uint256",
+            },
+            {
+                internalType: "bool",
+                name: "hasTarget",
+                type: "bool",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "readPrice",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "selfKisser",
+        outputs: [
+            {
+                internalType: "contract ISelfKisser",
+                name: "",
+                type: "address",
             },
         ],
         stateMutability: "view",
