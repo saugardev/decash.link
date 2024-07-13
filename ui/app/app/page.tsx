@@ -5,10 +5,10 @@ import LinkForm from "@/components/link-form";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function AppPage() {
+function AppContent() {
   const [activeButton, setActiveButton] = useState('send');
   const searchParams = useSearchParams();
 
@@ -53,5 +53,13 @@ export default function AppPage() {
         )}
       />
     </main>
-  )
+  );
+}
+
+export default function AppPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AppContent />
+    </Suspense>
+  );
 }
