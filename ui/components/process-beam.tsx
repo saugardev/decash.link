@@ -39,7 +39,7 @@ export function ProcessBeam({
   const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <MagicCard className="relative justify-center bg-card" gradientColor="#D9D9D955">
+    <MagicCard className="flex relative items-center justify-center bg-card" gradientColor="#D9D9D955">
       <div
         className={cn(
           "relative flex h-[500px] w-[500px] items-center justify-center overflow-hidden px-10",

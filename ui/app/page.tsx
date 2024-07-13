@@ -8,7 +8,7 @@ import SecondSection from "@/components/second-section";
 export default function Home() {
   return (
     <main className="my-10 flex min-h-screen flex-col">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto w-full max-w-6xl">
         <HeroSection />
         <ProtocolsUsed />
         <FirstSection />

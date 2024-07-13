@@ -6,18 +6,18 @@ import { ChevronRightIcon } from "lucide-react";
 
 const components = [
   {
-    name: 'Process Beam',
-    description: 'This is the Process Beam component description.',
+    name: 'Create',
+    description: 'Configure easily your link.',
     component: ProcessBeam
   },
   {
-    name: 'Another Component',
-    description: 'This is the Another Component description.',
+    name: 'Sign',
+    description: 'Confirm the deposit and create a link.',
     component: ProcessBeam
   },
   {
-    name: 'Third Component',
-    description: 'This is the Third Component description.',
+    name: 'Send',
+    description: 'Share with anybody.',
     component: ProcessBeam
   },
 ];
@@ -28,7 +28,7 @@ export default function FirstSection() {
   const ActiveComponent = components[activeComponentIndex].component;
 
   return (
-    <section id="problem" className="my-20">
+    <section id="problem" className="!w-full my-20">
       <div className="flex flex-1 flex-col space-y-1.5 px-5">
         <div className="inline-block w-fit rounded-full bg-primary px-3 py-1 text-sm text-background">
           Use Cases
@@ -36,7 +36,7 @@ export default function FirstSection() {
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">Pay your friends with a link</h1>
         <p className="max-w-[600px] md:text-xl">A seamless and easy to use protocol to sim</p>
       </div>
-      <div className="flex w-full items-center gap-5">
+      <div className="flex w-full h-full items-center gap-5">
         <ul className="mt-10 flex w-1/2 flex-col">
           {components.map((item, index) => (
             <li 
@@ -55,7 +55,7 @@ export default function FirstSection() {
             </li>
           ))}
         </ul>
-        <div className="mt-8 w-1/2">
+        <div className="mt-8 w-1/2 h-[400px]">
           <ActiveComponent />
         </div>
       </div>
