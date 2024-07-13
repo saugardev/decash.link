@@ -10,12 +10,14 @@ import { useSearchParams } from "next/navigation";
 
 function AppContent() {
   const [activeButton, setActiveButton] = useState('send');
+  const [claimId, setClaimId] = useState('');
   const searchParams = useSearchParams();
 
   useEffect(() => {
     const linkParam = searchParams.get('link');
     if (linkParam) {
       setActiveButton('receive');
+      setClaimId(linkParam);
     }
   }, [searchParams]);
 
@@ -43,7 +45,7 @@ function AppContent() {
           Receive
         </Button>
       </div>
-      {activeButton === 'send' ? <LinkForm /> : <ClaimForm />} {/* Conditionally render forms */}
+      {activeButton === 'send' ? <LinkForm /> : <ClaimForm claimId={claimId}/>} {/* Conditionally render forms */}
       <DotPattern
         width={40}
         height={40}
