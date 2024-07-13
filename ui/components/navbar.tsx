@@ -18,7 +18,7 @@ export default function Navbar() {
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/contract" className="text-sm">Contract</Link>
-            <Link href="/documentation" className="text-sm">Documentation</Link>
+            <Link href="https://docs.decash.link" target="_blank" className="text-sm">Documentation</Link>
             {path === '/app'
               ? <DynamicWidget />
               : <Link href="/app">
