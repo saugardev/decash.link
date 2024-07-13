@@ -60,7 +60,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ onValueChange }) 
           {isUsd ? usdAmount : tokenAmount}
         </div>
         <Button variant={'outline'} className="mx-auto mt-2 block text-xs" onClick={handleToggle}>
-          {isUsd ? `${tokenAmount} MATIC` : `${usdAmount} USD`}
+          {isUsd ? `${tokenAmount} ETH` : `${usdAmount} USD`}
           <span className="text-xs">
             {isUsd ? ' ⇅' : ' ⇵'}
           </span>

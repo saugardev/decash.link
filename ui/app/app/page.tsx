@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import BridgeForm from "@/components/bridge-form";
 
 function AppContent() {
   const [activeButton, setActiveButton] = useState('send');
@@ -55,7 +56,7 @@ function AppContent() {
       </div>
       {activeButton === 'send' && <LinkForm />}
       {activeButton === 'receive' && <ClaimForm claimId={claimId} />}
-      {activeButton === 'bridge' && <LinkForm />}
+      {activeButton === 'bridge' && <BridgeForm />}
       <DotPattern
         width={40}
         height={40}

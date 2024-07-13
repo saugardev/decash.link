@@ -101,7 +101,7 @@ export default function ClaimForm({ claimId: initialClaimId }: { claimId: string
         <div className="mx-5 flex w-full items-center justify-between">
           <div className="flex flex-col">
             <span className="font-semibold">Polygon</span>
-            <span>MATIC</span>
+            <span>ETH</span>
           </div>
           <ChevronDownIcon className="size-4" />
         </div>

@@ -22,7 +22,7 @@ const CurrencyDisplayer: React.FC<CurrencyDisplayerProps> = ({ tokenAmount }) =>
         </div>
         <div className="mx-auto mt-2 block text-xs">
         <Button variant={'outline'} className="mx-auto mt-2 block text-xs">
-          {tokenAmount} MATIC
+          {tokenAmount} ETH
         </Button>
         </div>
       </div>
