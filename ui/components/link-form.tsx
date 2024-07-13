@@ -68,7 +68,7 @@ export default function LinkForm() {
   };
 
   return (
-    <section className="mx-auto my-10 flex flex-col items-center">
+    <section className="mx-auto flex flex-col items-center">
       <div className="flex size-[400px] flex-col justify-between rounded-2xl border bg-white">
         <div className="p-5">
           <div className="flex items-center text-xs">
