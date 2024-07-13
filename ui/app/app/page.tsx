@@ -44,8 +44,18 @@ function AppContent() {
         >
           Receive
         </Button>
+        <Button 
+          size='sm' 
+          variant='outline' 
+          className={activeButton === 'bridge' ? 'active' : ''}
+          onClick={() => handleButtonClick('bridge')}
+        >
+          Bridge
+        </Button>
       </div>
-      {activeButton === 'send' ? <LinkForm /> : <ClaimForm claimId={claimId}/>} {/* Conditionally render forms */}
+      {activeButton === 'send' && <LinkForm />}
+      {activeButton === 'receive' && <ClaimForm claimId={claimId} />}
+      {activeButton === 'bridge' && <LinkForm />}
       <DotPattern
         width={40}
         height={40}
