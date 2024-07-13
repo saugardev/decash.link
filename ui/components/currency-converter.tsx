@@ -47,7 +47,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ onValueChange }) 
   };
 
   return (
-    <div className="mx-auto flex w-52 flex-col items-center p-5">
+    <div className="mx-auto flex w-52 flex-col items-center px-5 py-2">
       <div className="relative mb-2 text-center text-4xl">
         <div className="relative flex justify-center text-6xl">
           {isUsd && '$'}

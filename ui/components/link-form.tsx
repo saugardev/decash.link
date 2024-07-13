@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon, CopyIcon, XIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon, ChevronUpIcon, CopyIcon, CrossIcon, InfoIcon, SettingsIcon, XIcon } from "lucide-react";
 import CurrencyConverter from "./currency-converter";
 import { Button } from "./ui/button";
 import { FadeText } from "./magicui/fade-text";
@@ -10,6 +10,8 @@ import { parseUnits } from "viem";
 import Link from "next/link";
 import { QRCode } from 'react-qrcode-logo';
 import SentTable from "./sent-table";
+import { Input } from "@/components/ui/input";
+import { Toggle } from "./ui/toggle";
 
 export default function LinkForm() {
   const { data: hash, writeContractAsync: createPaymentLink } = useWriteContract();
@@ -21,6 +23,9 @@ export default function LinkForm() {
   const [transactionDetails, setTransactionDetails] = useState<any>(null);
   const [showSentTable, setShowSentTable] = useState(false);
   const [linkId, setLinkId] = useState(0);
+  const [viewLinkSettings, setViewLinkSettings] = useState(false);
+  const [priceTarget, setPriceTarget] = useState("");
+  const [enablePriceTarget, setEnablePriceTarget] = useState(false);
 
   const truncateHash = (hash: string) => {
     if (hash.length > 10) {
@@ -30,20 +35,36 @@ export default function LinkForm() {
   };
 
   const handleCreateLinkClick = async (e: any) => {
-    setOverlayVisible(true);
     e.preventDefault();
 
     const min = 10000;
     const max = Number.MAX_SAFE_INTEGER;
     const id = Math.floor(Math.random() * (max - min + 1)) + min;
     setLinkId(id);
-    
+
+    const args = []
+    if (enablePriceTarget) {
+      if (priceTarget.length >= 1) {
+        args.push(...[id, parseUnits(priceTarget, 18), true]);
+      }
+      else {
+        alert('Introduce a price target');
+        return;
+      }
+    }
+    else {
+      args.push(...[id, 0, false]);
+    }
+
+    setOverlayVisible(true);
+
+    console.log(args);
     try {
       const tx = await createPaymentLink({
         address: linksContractAddress,
         abi: linksContractABI,
         functionName: 'createPaymentLink',
-        args: [linkId, 0, false],
+        args: args,
         value: parseUnits(tokenAmount.toString(), 18)
       });
       setTransactionDetails(tx);
@@ -59,6 +80,20 @@ export default function LinkForm() {
   const handleCloseOverlay = () => {
     setOverlayVisible(false);
   };
+
+  const toggleLinkSettings = () => {
+    setViewLinkSettings(!viewLinkSettings)
+  }
+
+  const handlePriceTarget = (e: any) => {
+    e.preventDefault();
+    setPriceTarget(e.target.value)
+  }
+
+  const togglePriceTarget = (e: any) => {
+    e.preventDefault();
+    setEnablePriceTarget(!enablePriceTarget)
+  }
 
   const texts = ["Waiting for confirmation", "Confirming", "Transaction confirmed"];
   let currentText = texts[0];
@@ -86,11 +121,32 @@ export default function LinkForm() {
   return (
     <section className="mx-auto flex flex-col items-center">
       <div className="flex size-[400px] flex-col justify-between rounded-2xl border bg-white">
-        <div className="p-5">
-          <div className="flex items-center text-xs">
+        <div className="px-5 pt-2">
+          <div className="flex items-center justify-between text-xs">
             <span>You are sending</span>
+            <Button variant="ghost" size="icon" onClick={toggleLinkSettings}>
+              <SettingsIcon className="size-4" />
+            </Button>
           </div>
           <CurrencyConverter onValueChange={handleValueChange} />
+          {viewLinkSettings
+            ? <>
+                <div className="flex items-center gap-2 text-xs my-2 ml-[13px]">
+                  <div>Enable Chronicle price target</div>
+                  <InfoIcon className="size-4" />
+                </div>
+                <Input 
+                  placeholder="Set price target"
+                  type="number"
+                  onChange={handlePriceTarget}
+                />
+                <Toggle aria-label="Toggle price target" onClick={togglePriceTarget} className={`flex mt-2 gap-2 text-xs ${enablePriceTarget ? 'text-green-500' : 'text-red-500'}`}>
+                  {enablePriceTarget ? "Enabled" : "Disabled"}
+                  {enablePriceTarget ? <CheckIcon className="size-3" /> : <XIcon className="size-3" />}
+                </Toggle>
+              </>
+            : null
+          }
         </div>
         <div className="mt-5 flex h-16 items-center border-t text-xs">
           <div className="mx-5 flex w-full items-center justify-between">
