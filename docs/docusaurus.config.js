@@ -13,7 +13,7 @@ const config = {
   
   title: 'DeCash',
   tagline: 'DeCash documentation',
-  favicon: 'img/decash-icon.svg',
+  favicon: 'img/decash-icon-white.svg',
 
   // Set the production url of your site here
   url: 'https://docs.decash.link',
@@ -61,13 +61,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'DeCash',        
         logo: {
           alt: 'My Site Logo',
-          src: 'img/decash-icon.svg',
+          src: 'img/decash-icon-white.svg',
         },
         items: [
           {
@@ -76,16 +74,20 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          /*
-          { to: '/blog', label: 'Blog', position: 'left' },
-          */
-          /*
+            
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/saugardev/decash.link',
+            src: 'img/github-mark-white.svg',
+            position: 'right',
+            alt: 'Github logo',
+
+          },
+          {
+            href: 'https://github.com/saugardev/decash.link',
             label: 'GitHub',
             position: 'right',
           },
-          */
+          
         ],
       },      
       prism: {

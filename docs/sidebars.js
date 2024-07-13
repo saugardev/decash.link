@@ -17,84 +17,67 @@ const sidebars = {
     {
       type: 'html',
       className: 'sidebar-title',
-      value: 'DECASH DOCUMENTATION',
+      value: 'GETTING STARTED',
       defaultStyle: true,
     },
-    'welcome',
-    //Section "Getting started "
     {
-      type: 'category',
-      label: 'Getting started',
-      link: {
-        type: 'doc',
-        id: 'getting-started/index',
-      },
-      items: [
-        {
-          type: 'doc',
-          label: 'Welcome to DeCash',
-          id: 'getting-started/welcome-to-decash',
-        },
-        {
-          type: 'doc',
-          label: 'Concepts',
-          id: 'getting-started/concepts',
-        },
-      ],
+      type: 'doc',
+      label: 'Welcome to DeCash',
+      id: 'getting-started/welcome-to-decash',
     },
-    //Section "About"
     {
-      type: 'category',
-      label: 'About',
-      link: {
-        type: 'doc',
-        id: 'about/index',
-      },
-      items: [
-        {
-          type: 'doc',
-          label: 'What is DeCash',
-          id: 'about/what-is-decash',
-        },
-        {
-          type: 'doc',
-          label: 'Roadmap',
-          id: 'about/roadmap',
-        },
-        {
-          type: 'doc',
-          label: 'Polygon AggLayer',
-          id: 'about/polygon-agglayer',
-        },
-      ],
+      type: 'doc',
+      label: 'Concepts',
+      id: 'getting-started/concepts',
     },
-    //Section "User guide"
     {
-      type: 'category',
-      label: 'User guide',
-      link: {
-        type: 'doc',
-        id: 'user-guide/index',
-      },
-      items: [
-        {
-          type: 'doc',
-          label: 'Create a link',
-          id: 'user-guide/create-link',
-        },
-        {
-          type: 'doc',
-          label: 'Claim a link',
-          id: 'user-guide/claim-link',
-        },
-        {
-          type: 'doc',
-          label: 'Swap chain',
-          id: 'user-guide/swap-chain',
-        },
-      ],
+      type: 'html',
+      className: 'sidebar-title',
+      value: 'ABOUT',
+      defaultStyle: true,
     },
 
+
+    //Section "About"
+    {
+      type: 'doc',
+      label: 'What is DeCash',
+      id: 'about/what-is-decash',
+    },
+    {
+      type: 'doc',
+      label: 'Roadmap',
+      id: 'about/roadmap',
+    },
+    {
+      type: 'doc',
+      label: 'Polygon AggLayer',
+      id: 'about/polygon-agglayer',
+    },
+
+
+    //Section "User guide"
+    {
+      type: 'html',
+      className: 'sidebar-title',
+      value: 'USER GUIDE',
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Create a link',
+      id: 'user-guide/create-link',
+    },
+    {
+      type: 'doc',
+      label: 'Claim a link',
+      id: 'user-guide/claim-link',
+    },
+    {
+      type: 'doc',
+      label: 'Swap chain',
+      id: 'user-guide/swap-chain',
+    },
   ],
 };
 
