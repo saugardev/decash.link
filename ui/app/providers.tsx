@@ -11,6 +11,8 @@ import {
   DynamicWagmiConnector,
 } from "@/lib/dynamic";
 
+import { evmNetworks } from "@/config/evm-networks";
+
 const queryClient = new QueryClient();
 
 export function Providers(props: { children: ReactNode }) {
@@ -19,6 +21,7 @@ export function Providers(props: { children: ReactNode }) {
       settings={{
         environmentId: "16071e09-8ff8-4ee9-a0f1-33e9d3bc57ec",
         walletConnectors: [EthereumWalletConnectors],
+        overrides: { evmNetworks }
       }}
     >
       <WagmiProvider config={config}>
