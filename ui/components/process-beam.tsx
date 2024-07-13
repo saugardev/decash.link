@@ -5,6 +5,7 @@ import React, { forwardRef, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { MagicCard } from "./magicui/magic-card";
+import { PackagePlusIcon, QrCodeIcon, SendIcon, SignatureIcon, UserIcon } from "lucide-react";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -49,23 +50,23 @@ export function ProcessBeam({
         <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
           <div className="flex flex-col justify-center gap-2">
             <Circle ref={div1Ref}>
-              <Icons.googleDrive />
+              <PackagePlusIcon />
             </Circle>
             <Circle ref={div3Ref}>
-              <Icons.whatsapp />
+              <SignatureIcon />
             </Circle>
             <Circle ref={div5Ref}>
-              <Icons.notion />
+              <SendIcon />
             </Circle>
           </div>
           <div className="flex flex-col justify-center">
             <Circle ref={div6Ref} className="size-16">
-              <Icons.openai />
+              <QrCodeIcon />
             </Circle>
           </div>
           <div className="flex flex-col justify-center">
             <Circle ref={div7Ref}>
-              <Icons.user />
+              <UserIcon />
             </Circle>
           </div>
         </div>
