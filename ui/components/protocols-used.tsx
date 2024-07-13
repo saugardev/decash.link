@@ -27,6 +27,13 @@ export default function ProtocolsUsed() {
               height={48}
               className="col-span-2 max-h-6 object-contain object-left lg:col-span-1"
             />
+              <Image
+              alt="Statamic"
+              src="/chronicle-logo.png"
+              width={158}
+              height={48}
+              className="col-span-2 max-h-10 object-contain object-left lg:col-span-1"
+            />
           </div>
         </div>
       </div>
