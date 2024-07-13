@@ -151,8 +151,8 @@ export default function LinkForm() {
         <div className="mt-5 flex h-16 items-center border-t text-xs">
           <div className="mx-5 flex w-full items-center justify-between">
             <div className="flex flex-col">
-              <span className="font-semibold">Polygon</span>
-              <span>MATIC</span>
+              <span className="font-semibold">Select Destination Chain</span>
+              <span>Current - Sepolia</span>
             </div>
             <ChevronDownIcon className="size-4" />
           </div>
