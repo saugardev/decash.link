@@ -20,6 +20,7 @@ export default function LinkForm() {
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const [transactionDetails, setTransactionDetails] = useState<any>(null);
   const [showSentTable, setShowSentTable] = useState(false);
+  const [linkId, setLinkId] = useState(0);
 
   const truncateHash = (hash: string) => {
     if (hash.length > 10) {
@@ -35,13 +36,14 @@ export default function LinkForm() {
     const min = 10000;
     const max = Number.MAX_SAFE_INTEGER;
     const id = Math.floor(Math.random() * (max - min + 1)) + min;
+    setLinkId(id);
 
     try {
       const tx = await createPaymentLink({
         address: linksContractAddress,
         abi: linksContractABI,
         functionName: 'createPaymentLink',
-        args: [id],
+        args: [linkId],
         value: parseUnits(tokenAmount.toString(), 18)
       });
       setTransactionDetails(tx);
@@ -71,6 +73,15 @@ export default function LinkForm() {
   const handleValueChange = (usdAmount: number, tokenAmount: number) => {
     setUsdAmount(usdAmount);
     setTokenAmount(tokenAmount);
+  };
+
+  const copyToClipboard = () => {
+    const link = `https://decash.link/app?link=${linkId}`;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("Link copied to clipboard!");
+    }).catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
   };
 
   return (
@@ -136,7 +147,7 @@ export default function LinkForm() {
                       <span>Link Created Succesfully</span>
                     </div>
                     <div className="flex justify-center mt-9">
-                      <QRCode value="https://decash.link" qrStyle="fluid" eyeRadius={100} size={200}/>
+                      <QRCode value={`https://decash.link/app?link=${linkId}`} qrStyle="fluid" eyeRadius={100} size={200}/>
                     </div>
                   </div>
                   <div className="mt-5 flex h-16 items-center border-t text-xs">
@@ -153,12 +164,10 @@ export default function LinkForm() {
                   </div>
                 </div>
                 <div className="my-5 flex justify-end gap-5">
-                  <Link href="/app">
-                    <Button size={"lg"} className="flex items-center gap-2">
-                      Copy Link
-                      <CopyIcon className="size-4"/>
-                    </Button>
-                  </Link>
+                  <Button size={"lg"} className="flex items-center gap-2" onClick={copyToClipboard}>
+                    Copy Link
+                    <CopyIcon className="size-4"/>
+                  </Button>
                 </div>
                 </motion.div>
               ) : (
