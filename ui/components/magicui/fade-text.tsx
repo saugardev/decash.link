@@ -19,10 +19,8 @@ export function FadeText({
   },
   text,
 }: FadeTextProps) {
-  const directionOffset = useMemo(() => {
-    const map = { up: 10, down: -10, left: -10, right: 10 };
-    return map[direction];
-  }, [direction]);
+  const fadeInOffset = 10; // Distance to move in the fade-in direction
+  const fadeOutOffset = -10; // Distance to move in the fade-out direction
 
   const axis = direction === "up" || direction === "down" ? "y" : "x";
 
@@ -36,20 +34,26 @@ export function FadeText({
       hidden: {
         ...(hidden ?? {}),
         opacity: hidden?.opacity ?? 0,
-        [axis]: hidden?.[axis] ?? directionOffset,
+        [axis]: fadeOutOffset, // Set to fadeOutOffset for hidden state
       },
       show: {
         ...(show ?? {}),
         opacity: show?.opacity ?? 1,
-        [axis]: show?.[axis] ?? 0,
+        [axis]: 0, // Set to 0 for show state
+      },
+      exit: {
+        ...(hidden ?? {}),
+        opacity: hidden?.opacity ?? 0,
+        [axis]: fadeInOffset, // Set to fadeInOffset for exit state
       },
     };
-  }, [directionOffset, axis, framerProps]);
+  }, [axis, fadeInOffset, fadeOutOffset, framerProps]);
 
   return (
     <motion.div
       initial="hidden"
       animate="show"
+      exit="exit" // Add exit state for motion.div
       viewport={{ once: true }}
       variants={FADE_ANIMATION_VARIANTS}
     >

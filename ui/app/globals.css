@@ -126,3 +126,18 @@ width: 2rem;
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
 width: 3rem;
 }
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hides the spinner for number inputs in Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.active {
+  @apply bg-accent
+}
