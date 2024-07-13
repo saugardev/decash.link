@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronDownIcon, ChevronRightIcon, CopyCheckIcon, CopyIcon, QrCode, XIcon } from "lucide-react";
+import { useState } from "react";
+import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon, CopyIcon, XIcon } from "lucide-react";
 import CurrencyConverter from "./currency-converter";
 import { Button } from "./ui/button";
 import { FadeText } from "./magicui/fade-text";
@@ -9,6 +9,7 @@ import { linksContractABI, linksContractAddress } from "@/config/constants";
 import { parseUnits } from "viem";
 import Link from "next/link";
 import { QRCode } from 'react-qrcode-logo';
+import SentTable from "./sent-table";
 
 export default function LinkForm() {
   const { data: hash, writeContractAsync: createPaymentLink, isPending: isCreatingLink } = useWriteContract();
@@ -18,6 +19,7 @@ export default function LinkForm() {
   const [usdAmount, setUsdAmount] = useState<number>(0);
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const [transactionDetails, setTransactionDetails] = useState<any>(null);
+  const [showSentTable, setShowSentTable] = useState(false);
 
   const truncateHash = (hash: string) => {
     if (hash.length > 10) {
@@ -26,7 +28,7 @@ export default function LinkForm() {
     return hash;
   };
 
-  const handleButtonClick = async (e: any) => {
+  const handleCreateLinkClick = async (e: any) => {
     setOverlayVisible(true);
     e.preventDefault();
 
@@ -47,6 +49,10 @@ export default function LinkForm() {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleViewMovementsClick = () => {
+    setShowSentTable(!showSentTable);
   };
 
   const handleCloseOverlay = () => {
@@ -86,10 +92,17 @@ export default function LinkForm() {
           </div>
         </div>
       </div>
-      <Button size={"lg"} className="mt-5 flex items-center gap-2 self-end" onClick={handleButtonClick}>
-        Create Link
-        <ChevronRightIcon className="size-4" />
-      </Button>
+      <div className="flex justify-between w-full">
+        <Button size={"lg"} variant='outline' className="mt-5 flex items-center gap-2 self-end" onClick={handleViewMovementsClick}>
+          {showSentTable ? 'Hide movements' : 'Show movements'}
+          {showSentTable ? <ChevronUpIcon className="size-4" /> : <ChevronDownIcon className="size-4" />}
+          
+        </Button>
+        <Button size={"lg"} className="mt-5 flex items-center gap-2 self-end" onClick={handleCreateLinkClick}>
+          Create Link
+          <ChevronRightIcon className="size-4" />
+        </Button>
+      </div>
       {overlayVisible && (
         <div className="animate-in fade-in-0 fixed inset-0 z-50 bg-white/90">
           <div className="relative flex size-full items-center justify-center">
@@ -161,6 +174,7 @@ export default function LinkForm() {
           </div>        
         </div>        
       )}
+      {showSentTable && <SentTable />}
     </section>
   );
 }
