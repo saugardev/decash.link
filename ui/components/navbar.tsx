@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { ChevronRightIcon } from "lucide-react";
 import { usePathname } from 'next/navigation';
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+import { linksContractAddress } from "@/config/constants";
 
 export default function Navbar() {
   const path = usePathname();
@@ -17,7 +18,7 @@ export default function Navbar() {
             <Link href="/" className="text-xl font-bold">DeCash</Link>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="/contract" className="text-sm">Contract</Link>
+            <Link href={`https://eth-sepolia.blockscout.com/address/${linksContractAddress}`} target="_blank" className="text-sm">Contract</Link>
             <Link href="https://docs.decash.link" target="_blank" className="text-sm">Documentation</Link>
             {path === '/app'
               ? <DynamicWidget />

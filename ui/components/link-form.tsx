@@ -3,11 +3,15 @@ import { ChevronDownIcon, ChevronRightIcon, XIcon } from "lucide-react";
 import CurrencyConverter from "./currency-converter";
 import { Button } from "./ui/button";
 import { FadeText } from "./magicui/fade-text";
-import { AnimatePresence } from "framer-motion"; // Import AnimatePresence
+import { AnimatePresence } from "framer-motion";
+import { useWriteContract } from "wagmi";
+import { linksContractABI, linksContractAddress } from "@/config/constants";
 
 export default function LinkForm() {
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [step, setStep] = useState(0); // State to manage the current step
+  const [step, setStep] = useState(0);
+  const [usdAmount, setUsdAmount] = useState<number>(0);
+  const [tokenAmount, setTokenAmount] = useState<number>(0);
 
   const handleButtonClick = () => {
     setOverlayVisible(true);
@@ -18,11 +22,18 @@ export default function LinkForm() {
   };
 
   const nextStep = () => {
-    setStep((prev) => (prev + 1) % 3); // Cycle through 0, 1, 2
+    setStep((prev) => (prev + 1) % 3);
   };
 
   const texts = ["Waiting for confirmation", "Confirming", "Transaction confirmed"];
   const currentText = texts[step];
+
+  const handleValueChange = (usdAmount: number, tokenAmount: number) => {
+    setUsdAmount(usdAmount);
+    setTokenAmount(tokenAmount);
+  };
+
+  const { writeContractAsync: createPaymentLink } = useWriteContract();
 
   return (
     <section className="mx-auto my-10 flex flex-col items-center">
@@ -31,7 +42,7 @@ export default function LinkForm() {
           <div className="flex items-center text-xs">
             <span>You are sending</span>
           </div>
-          <CurrencyConverter />
+          <CurrencyConverter onValueChange={handleValueChange} />
         </div>
         <div className="mt-5 flex h-16 items-center border-t text-xs">
           <div className="mx-5 flex w-full items-center justify-between">
@@ -77,8 +88,8 @@ export default function LinkForm() {
               </div>
               <Button onClick={nextStep}>Next Step</Button>
             </div>
-          </div>
-        </div>
+          </div>        
+        </div>        
       )}
     </section>
   );

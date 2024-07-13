@@ -1,7 +1,11 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Button } from '@/components/ui/button';
 
-const CurrencyConverter: React.FC = () => {
+interface CurrencyConverterProps {
+  onValueChange: (usdAmount: number, tokenAmount: number) => void;
+}
+
+const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ onValueChange }) => {
   const tokenPriceInUSD = 0.02959; // Example token price
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const [usdAmount, setUsdAmount] = useState<number>(0);
@@ -16,6 +20,10 @@ const CurrencyConverter: React.FC = () => {
       setUsdAmount(isFinite(usdValue) ? parseFloat(usdValue.toFixed(2)) : 0);
     }
   }, [usdAmount, tokenAmount, isUsd, tokenPriceInUSD]);
+
+  useEffect(() => {
+    onValueChange(usdAmount, tokenAmount);
+  }, [usdAmount, tokenAmount, onValueChange]);
 
   const handleToggle = () => {
     setIsUsd(!isUsd);
