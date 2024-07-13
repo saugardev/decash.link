@@ -30,12 +30,16 @@ export default function LinkForm() {
     setOverlayVisible(true);
     e.preventDefault();
 
+    const min = 10000;
+    const max = Number.MAX_SAFE_INTEGER;
+    const id = Math.floor(Math.random() * (max - min + 1)) + min;
+
     try {
       const tx = await createPaymentLink({
         address: linksContractAddress,
         abi: linksContractABI,
         functionName: 'createPaymentLink',
-        args: [8],
+        args: [id],
         value: parseUnits(tokenAmount.toString(), 18)
       });
       setTransactionDetails(tx);
