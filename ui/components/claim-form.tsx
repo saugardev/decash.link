@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useReadContract } from "wagmi";
 import { linksContractABI, linksContractAddress } from "@/config/constants";
 import { formatUnits } from "viem";
+import CurrencyDisplayer from "./currency-displayer";
 
 export default function ClaimForm({ claimId: initialClaimId }: { claimId: string | undefined }) {
   const [claimId, setClaimId] = useState<string | undefined>(initialClaimId);
@@ -19,7 +20,6 @@ export default function ClaimForm({ claimId: initialClaimId }: { claimId: string
 
   useEffect(() => {
     if (data) {
-      console.log("Data updated:", data);
       setPaymentInfo(data);
     }
   }, [data]);
@@ -39,7 +39,7 @@ export default function ClaimForm({ claimId: initialClaimId }: { claimId: string
           <span>You are claiming</span>
         </div>
         <div className="text-center text-3xl mt-5">
-          {paymentInfo && formatUnits(paymentInfo[1].toString(), 18).toString()}
+          {paymentInfo && <CurrencyDisplayer tokenAmount={parseFloat(formatUnits(paymentInfo[1].toString(), 18))}/> }
         </div>
       </div>
       <div className="mt-5 flex h-16 items-center border-t text-xs">
