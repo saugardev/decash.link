@@ -3,7 +3,7 @@ sidebar_position: 1
 slug: /
 ---
 
-# Welcome to decash
+# Welcome to DeCash 
 
 Right now, moving assets across different blockchain networks is complicated and expensive, much like how the internet was in its early days when sending information was slow and difficult. Users often face high costs, slow transactions, and fragmented liquidity. These issues result in a poor user experience, making it hard for more people to use blockchain technology.
 

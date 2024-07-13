@@ -8,12 +8,10 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-
-
-  
+ 
   title: 'DeCash',
   tagline: 'DeCash documentation',
-  favicon: 'img/decash-icon-white.svg',
+  favicon: 'img/decash-icon-black.svg',
 
   // Set the production url of your site here
   url: 'https://docs.decash.link',
@@ -23,23 +21,17 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  projectName: 'decash', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
 
   presets: [
-
-
     
     [
       'classic',
@@ -49,12 +41,12 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:'https://github.com/saugardev/decash.link/docs',
+          editUrl:'https://github.com/saugardev/decash.link/tree/main/docs',
         },       
         theme: {
           customCss: './src/css/custom.css',
         },
-      }),
+      }), 
     ],
   ],
 
