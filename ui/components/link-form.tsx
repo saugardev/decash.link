@@ -12,7 +12,7 @@ import { QRCode } from 'react-qrcode-logo';
 import SentTable from "./sent-table";
 
 export default function LinkForm() {
-  const { data: hash, writeContractAsync: createPaymentLink, isPending: isCreatingLink } = useWriteContract();
+  const { data: hash, writeContractAsync: createPaymentLink } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
   const [overlayVisible, setOverlayVisible] = useState(false);
