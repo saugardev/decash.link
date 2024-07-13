@@ -5,10 +5,19 @@ import LinkForm from "@/components/link-form";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function AppPage() {
   const [activeButton, setActiveButton] = useState('send');
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const linkParam = searchParams.get('link');
+    if (linkParam) {
+      setActiveButton('receive');
+    }
+  }, [searchParams]);
 
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName);
