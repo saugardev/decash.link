@@ -73,11 +73,6 @@ const sidebars = {
       label: 'Claim a link',
       id: 'user-guide/claim-link',
     },
-    {
-      type: 'doc',
-      label: 'Swap chain',
-      id: 'user-guide/swap-chain',
-    },
 
     //Section "Chronicle"
     {

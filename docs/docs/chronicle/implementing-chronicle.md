@@ -62,5 +62,11 @@ Inside of the function `claimPaymentLink`, there is this snippet of code which d
     }
 ```
 
+## Using Chronicle to set a Price Target
+
+You can set a price target so the deposit cannot be claimed unless the price target exceeds the set amount by the user depositing the money.
+
+![You can set a price target](/img/create-link/create-link-7.jpg)
+
 If the target price has been set (it has a value), it reads from the Chronicle Oracle. If the token price surpasses or equals the target price then the target is not met, making the deposit of the money not redeemable until the target price is less than the token price
 
