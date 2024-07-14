@@ -24,6 +24,8 @@ export default function ClaimsTable() {
     return hash;
   };
 
+  const handleClaim = (tx: any) => {}
+
   return (
     <>
       <h2 className="text-xl font-bold text-center mt-20">Claims</h2>

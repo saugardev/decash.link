@@ -42,7 +42,7 @@ export function ProcessBeam({
     <MagicCard className="flex relative items-center justify-center bg-card" gradientColor="#D9D9D955">
       <div
         className={cn(
-          "relative flex h-[500px] w-[500px] items-center justify-center overflow-hidden px-10",
+          "relative flex h-[250px] w-[25  0px] md:h-[500px] md:w-[500px]  justify-center overflow-hidden",
           className,
         )}
         ref={containerRef}

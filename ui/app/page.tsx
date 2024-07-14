@@ -13,8 +13,6 @@ export default function Home() {
         <ProtocolsUsed />
         <FirstSection />
       </div>
-
-      <SecondSection />
       <DotPattern
         width={40}
         height={40}
