@@ -30,7 +30,7 @@ export default function FirstSection() {
 
   const ActiveComponent = components[activeComponentIndex].component;
 
-  const handleClick = (link) => {
+  const handleClick = (link: any) => {
     window.location.href = link;
   };
 
