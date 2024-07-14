@@ -25,25 +25,23 @@ const components = [
   },
 ];
 
-
 export default function FirstSection() {
   const [activeComponentIndex, setActiveComponentIndex] = useState(0);
 
   const ActiveComponent = components[activeComponentIndex].component;
 
-  const handleClick = (link: string) => {
+  const handleClick = (link) => {
     window.location.href = link;
   };
-  
 
   return (
-    <section id="problem" className="!w-full my-20">
-      <div className="flex flex-1 flex-col space-y-1 px-5">
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">Simple by design</h1>
-        <p className="max-w-[600px] md:text-xl">Create links with ease</p>
+    <section id="problem" className="w-full my-20 px-5">
+      <div className="flex flex-col space-y-1 text-center md:text-left">
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl">Simple by design</h1>
+        <p className="max-w-[600px] mx-auto md:mx-0 md:text-xl">Create links with ease</p>
       </div>
-      <div className="flex w-full h-full items-center gap-5">
-        <ul className="mt-10 flex w-1/2 flex-col">
+      <div className="flex flex-col md:flex-row md:items-center md:gap-5 mt-10">
+        <ul className="flex flex-col w-full md:w-1/2 space-y-5">
           {components.map((item, index) => (
             <li
               key={index}
@@ -52,19 +50,17 @@ export default function FirstSection() {
             >
               <h2 className="text-xl font-bold">{item.name}</h2>
               <p className="mb-2 text-muted-foreground">{item.description}</p>
-              <button
-                className="mt-5 flex items-center text-xs"
-              >
+              <button className="mt-5 flex items-center text-xs">
                 <span>Learn More</span>
-                <ChevronRightIcon className="size-4" />
+                <ChevronRightIcon className="w-4 h-4 ml-1" />
               </button>
             </li>
           ))}
         </ul>
-        <div className="mt-8 w-1/2 h-[400px]">
+        <div className="w-full lg:w-1/2 h-[400px] mt-8 md:mt-0">
           <ActiveComponent />
         </div>
       </div>
     </section>
-  )
+  );
 }

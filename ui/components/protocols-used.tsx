@@ -5,34 +5,34 @@ export default function ProtocolsUsed() {
     <div className="py-5 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="mx-auto flex items-center justify-center gap-10">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 items-center justify-center">
             <Image
-              alt="Statamic"
+              alt="Polygon"
               src="/polygon-logo.png"
               width={158}
               height={48}
-              className="col-span-2 max-h-8 object-contain object-left lg:col-span-1"
+              className="max-h-8 object-contain"
             />
             <Image
-              alt="Statamic"
+              alt="Dynamic"
               src="/dynamic-logo.png"
               width={158}
               height={48}
-              className="col-span-2 max-h-6 object-contain object-left lg:col-span-1"
+              className="max-h-6 object-contain"
             />
             <Image
-              alt="Statamic"
+              alt="Blockscout"
               src="/blockscout-logo.png"
               width={158}
               height={48}
-              className="col-span-2 max-h-6 object-contain object-left lg:col-span-1"
+              className="max-h-6 object-contain"
             />
-              <Image
-              alt="Statamic"
+            <Image
+              alt="Chronicle"
               src="/chronicle-logo.png"
               width={158}
               height={48}
-              className="col-span-2 max-h-10 object-contain object-left lg:col-span-1"
+              className="max-h-10 object-contain"
             />
           </div>
         </div>
