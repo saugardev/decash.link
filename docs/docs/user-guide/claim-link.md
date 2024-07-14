@@ -15,20 +15,22 @@ To claim your deposit, you have two convenient options:
 
 Once you have accessed the link, a page similar to the image below will appear. This page will display the deposit amount you are claiming, showing the value in both tokens and USD.
 
-<img src="/img/claim-link/claim-link-1.jpg" alt="Claim Page"/>
+![Claim Page](/img/claim-link/claim-link-1.jpg)
+
 
 ## How to Claim
 
 To proceed with claiming your deposit, follow these steps:
 
 1. **Connect Your Wallet**: Make sure you are [connected](https://docs.decash.link/docs/user-guide/create-link#log-in-with-your-wallet) to your wallet.
-2. **Press the Claim Button**: Click on the **Claim** button. 
+2. **Press the Claim Button**: Click on the `Claim` button. 
 3. **Follow Wallet Instructions**: Follow the instructions provided by your wallet to complete the transaction.
 
-<img src="/img/claim-link/claim-link-2.jpg" alt="Following instructions"/>
+![Following instructions](/img/claim-link/claim-link-2.jpg)
+
 
 ## Transaction completed
 
-You have successfully claimed the deposit, and it is now securely stored in your wallet. For added assurance, you can verify the transaction details using [BlockScout](https://www.blockscout.com/). Simply click on **View on Blockscout** to see all the relevant details.
+You have successfully claimed the deposit, and it is now securely stored in your wallet. For added assurance, you can verify the transaction details using [BlockScout](https://www.blockscout.com/). Simply click on `View on Blockscout` to see all the relevant details.
 
-<img src="/img/claim-link/claim-link-3.jpg" alt="Transaction completed"/>
+![Transaction completed](/img/claim-link/claim-link-3.jpg)
