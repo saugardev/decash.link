@@ -27,7 +27,6 @@ function encodeMetadata(linkId) {
     return encodePacked(["uint256"], [linkId]);
 }
 
-/*
 console.log(
     await bridgeAsset(
         0,
@@ -99,12 +98,12 @@ console.log(
         "",
         account
     )
-);*/
+);
 
-// console.log(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX));
-// console.log(await isClaimed(28474, _SEPOLIA_INDEX, _ZKYOTO_INDEX));
-// console.log(await isClaimed(8270, _CARDONA_INDEX, _SEPOLIA_INDEX));
-// console.log(await isClaimed(8271, _CARDONA_INDEX, _ZKYOTO_INDEX));
+console.log(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX));
+console.log(await isClaimed(28474, _SEPOLIA_INDEX, _ZKYOTO_INDEX));
+console.log(await isClaimed(8270, _CARDONA_INDEX, _SEPOLIA_INDEX));
+console.log(await isClaimed(8271, _CARDONA_INDEX, _ZKYOTO_INDEX));
 
 const data = await buildPayloadForClaim(
     "0x9c2e00624d7d60bcdd8124639bd8369e68062b00081b512b2f6c930a5b282c50",
@@ -113,10 +112,6 @@ const data = await buildPayloadForClaim(
 
 console.log(data);
 
-// const tx = await claimAsset(data, account);
-// console.log(tx);
-
-/*
 if (!(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX))) {
     const data = await buildPayloadForClaim(
         "0x223671c126e6270e8c24eee62a9431f4efa8bc077a0d9a2396b6714ecc6c2167",
@@ -127,7 +122,7 @@ if (!(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX))) {
     console.log(tx);
 }
 if (!(await isClaimed(28474, _SEPOLIA_INDEX, _ZKYOTO_INDEX))) {
-} 
+}
 if (!(await isClaimed(8270, _CARDONA_INDEX, _SEPOLIA_INDEX))) {
     const data = await buildPayloadForClaim(
         "0x650076d1cdd4cec312d10559bddc4973a89d7675f9e60adf85d2677cd490cf58",
@@ -145,7 +140,7 @@ if (!(await isClaimed(8271, _CARDONA_INDEX, _ZKYOTO_INDEX))) {
 
     const tx = await claimAsset(data, account);
     console.log(tx);
-} 
+}
 if (!(await isClaimed(745, _ZKYOTO_INDEX, _SEPOLIA_INDEX))) {
     const data = await buildPayloadForClaim(
         "0x73feecdaafa9c3a236a500479ea41fefa957a3a5da823d3f2582fc567af033c4",
@@ -163,41 +158,34 @@ if (!(await isClaimed(746, _ZKYOTO_INDEX, _CARDONA_INDEX))) {
 
     const tx = await claimAsset(data, account);
     console.log(tx);
-} */
+}
 
-// console.log(
-//     await bridgeMessage(
-//         _SEPOLIA_INDEX,
-//         AMOUNT,
-//         _CARDONA_INDEX,
-//         _CARDONA_DECASH_ADDRESS,
-//         true,
-//         encodeMetadata(1),
-//         account
-//     )
-// );
+console.log(
+    await bridgeMessage(
+        _SEPOLIA_INDEX,
+        AMOUNT,
+        _CARDONA_INDEX,
+        _CARDONA_DECASH_ADDRESS,
+        true,
+        encodeMetadata(1),
+        account
+    )
+);
 
-// console.log(
-//     await bridgeMessage(
-//         _SEPOLIA_INDEX,
-//         AMOUNT,
-//         _ZKYOTO_INDEX,
-//         _ZKYOTO_DECASH_ADDRESS,
-//         true,
-//         encodeMetadata(1),
-//         account
-//     )
-// );
+console.log(
+    await bridgeMessage(
+        _SEPOLIA_INDEX,
+        AMOUNT,
+        _ZKYOTO_INDEX,
+        _ZKYOTO_DECASH_ADDRESS,
+        true,
+        encodeMetadata(1),
+        account
+    )
+);
 
-// console.log(data);
+console.log(data);
 
-// const tx = await claimAsset(data, account);
+const tx = await claimAsset(data, account);
 
-// console.log(tx);
-
-// BUILD PAYLOAD FOR CLAIM
-// RECEIVES:
-// ORIGIN TRANSACTION HASH
-// ORIGIN NETWORK ID
-// RETURNS:
-// DATA TO CLAIM ASSET/MESSAGE
+console.log(tx);
