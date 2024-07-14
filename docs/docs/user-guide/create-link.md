@@ -8,13 +8,13 @@ title: Create Link
 
 ## Access the Link Creation Page
 
-To begin creating a link, first navigate to [decash.link/app](https://decash.link/app). You can also start the process by clicking the **Create link** button, which is conveniently located both in the center of the page and at the top right corner of the [landing page](https://decash.link).
+To begin creating a link, first navigate to [decash.link/app](https://decash.link/app). You can also start the process by clicking the `Create link` button, which is conveniently located both in the center of the page and at the top right corner of the [landing page](https://decash.link).
 
 ![Access the link creation page](/img/create-link/create-link-1.jpg)
 
 ## Log In with Your Wallet
 
-Once you are on the [link creation page](#access-the-link-creation-page), the next step is to log in with your wallet. Click the **Log in** button situated at the top right corner of the page. This will prompt you to connect your wallet, which is essential for making any transactions or deposits.
+Once you are on the [link creation page](#access-the-link-creation-page), the next step is to log in with your wallet. Click the `Log in` button situated at the top right corner of the page. This will prompt you to connect your wallet, which is essential for making any transactions or deposits.
 
 ![Log in with your wallet](/img/create-link/create-link-2.jpg)
 
@@ -52,7 +52,7 @@ You can set a price target so the deposit cannot be claimed unless the price tar
 
 ## Generate Link
 
-Once you've determined the amount you wish to deposit, click on **Generate Link** and complete the transaction using your wallet.
+Once you've determined the amount you wish to deposit, click on `Generate Link` and complete the transaction using your wallet.
 
 ## Share Link
 
@@ -61,6 +61,12 @@ After generating the link, a pop-up will appear, providing you with two convenie
 1. Scan the on-screen QR code to share the link.
 2. Click the Copy Link button.
 
-Additionally, you can verify the transaction hash on [BlockScout](https://www.blockscout.com/) by clicking on **View on Blockscout**.
+Additionally, you can verify the transaction hash on [BlockScout](https://www.blockscout.com/) by clicking on `View on Blockscout`.
 
 ![Generated link pop-up](/img/create-link/create-link-8.jpg)
+
+## See past movements
+
+You can see the previous deposits by pressing the `Show movements` button. That will show a list of the previously created movements.
+
+
