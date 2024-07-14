@@ -8,6 +8,7 @@ import CurrencyDisplayer from "./currency-displayer";
 import { AnimatePresence, motion } from "framer-motion";
 import { FadeText } from "./magicui/fade-text";
 import Link from "next/link";
+import { Input } from "./ui/input";
 
 export default function ClaimForm({ claimId: initialClaimId }: { claimId: string | undefined }) {
   const { address } = useAccount();
@@ -100,10 +101,10 @@ export default function ClaimForm({ claimId: initialClaimId }: { claimId: string
       <div className="mt-5 flex h-16 items-center border-t text-xs">
         <div className="mx-5 flex w-full items-center justify-between">
           <div className="flex flex-col">
-            <span className="font-semibold">Polygon</span>
+            <span className="font-semibold">Sepolia</span>
             <span>ETH</span>
           </div>
-          <ChevronDownIcon className="size-4" />
+          {/* <ChevronDownIcon className="size-4" /> */}
         </div>
       </div>
     </div>
@@ -113,12 +114,12 @@ export default function ClaimForm({ claimId: initialClaimId }: { claimId: string
     <div className="flex size-[400px] flex-col justify-between rounded-2xl border bg-white p-5">
       <div className="flex flex-col mb-5">
         <label htmlFor="claimId" className="text-xs font-semibold">Enter Claim ID</label>
-        <input
+        <Input
           type="text"
           id="claimId"
           value={inputId}
           onChange={handleInputChange}
-          className="mt-1 rounded border px-3 py-2"
+          className="mt-2"
         />
       </div>
       <Button size={"lg"} onClick={handleVerify} className="flex items-center gap-2 self-end">
