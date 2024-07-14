@@ -101,6 +101,21 @@ console.log(
     )
 );*/
 
+// console.log(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX));
+// console.log(await isClaimed(28474, _SEPOLIA_INDEX, _ZKYOTO_INDEX));
+// console.log(await isClaimed(8270, _CARDONA_INDEX, _SEPOLIA_INDEX));
+// console.log(await isClaimed(8271, _CARDONA_INDEX, _ZKYOTO_INDEX));
+
+const data = await buildPayloadForClaim(
+    "0x9c2e00624d7d60bcdd8124639bd8369e68062b00081b512b2f6c930a5b282c50",
+    _SEPOLIA_INDEX
+);
+
+console.log(data);
+
+// const tx = await claimAsset(data, account);
+// console.log(tx);
+
 /*
 if (!(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX))) {
     const data = await buildPayloadForClaim(
@@ -112,7 +127,7 @@ if (!(await isClaimed(28473, _SEPOLIA_INDEX, _CARDONA_INDEX))) {
     console.log(tx);
 }
 if (!(await isClaimed(28474, _SEPOLIA_INDEX, _ZKYOTO_INDEX))) {
-}
+} 
 if (!(await isClaimed(8270, _CARDONA_INDEX, _SEPOLIA_INDEX))) {
     const data = await buildPayloadForClaim(
         "0x650076d1cdd4cec312d10559bddc4973a89d7675f9e60adf85d2677cd490cf58",
@@ -130,7 +145,7 @@ if (!(await isClaimed(8271, _CARDONA_INDEX, _ZKYOTO_INDEX))) {
 
     const tx = await claimAsset(data, account);
     console.log(tx);
-}
+} 
 if (!(await isClaimed(745, _ZKYOTO_INDEX, _SEPOLIA_INDEX))) {
     const data = await buildPayloadForClaim(
         "0x73feecdaafa9c3a236a500479ea41fefa957a3a5da823d3f2582fc567af033c4",
