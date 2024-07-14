@@ -4,17 +4,17 @@ import CurrencyConverter from "./currency-converter";
 import { Button } from "./ui/button";
 import { FadeText } from "./magicui/fade-text";
 import { AnimatePresence, motion } from "framer-motion";
-import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { linksContractABI, linksContractAddress } from "@/config/constants";
+import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
+import { aggLayerContractABI, linksContractABI, linksContractAddress, TESTNET_BRIDGE_ADDRESS } from "@/config/constants";
 import { parseUnits } from "viem";
 import Link from "next/link";
 import { QRCode } from 'react-qrcode-logo';
-import SentTable from "./sent-table";
-import { Input } from "@/components/ui/input";
-import { Toggle } from "./ui/toggle";
+import ClaimsTable from './claims-table'
 
 export default function BridgeForm() {
-  const { data: hash, writeContractAsync: createPaymentLink } = useWriteContract();
+  const { address } = useAccount();
+
+  const { data: hash, writeContractAsync: createBridge } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
   const [overlayVisible, setOverlayVisible] = useState(false);
@@ -38,42 +38,44 @@ export default function BridgeForm() {
 
   const handleCreateLinkClick = async (e: any) => {
     e.preventDefault();
-
-    const min = 10000;
-    const max = Number.MAX_SAFE_INTEGER;
-    const id = Math.floor(Math.random() * (max - min + 1)) + min;
-    setLinkId(id);
-
-    const args = []
-    if (enablePriceTarget) {
-      if (priceTarget.length >= 1) {
-        args.push(...[id, parseUnits(priceTarget, 18), true]);
-      }
-      else {
-        alert('Introduce a price target');
-        return;
-      }
-    }
-    else {
-      args.push(...[id, 0, false]);
-    }
-
-    setOverlayVisible(true);
-
+  
+    const args = [
+      1, // destinationNetwork
+      address, // destinationAddress
+      parseUnits(tokenAmount.toString(), 18), // amount
+      "0x0000000000000000000000000000000000000000", // token
+      true, // forceUpdateGlobalExitRoot
+      '', // permitData
+    ]
+  
     console.log(args);
+  
+    setOverlayVisible(true);
+  
     try {
-      const tx = await createPaymentLink({
-        address: linksContractAddress,
-        abi: linksContractABI,
-        functionName: 'createPaymentLink',
+      const tx = await createBridge({
+        address: TESTNET_BRIDGE_ADDRESS,
+        abi: aggLayerContractABI,
+        functionName: 'bridgeAsset',
         args: args,
         value: parseUnits(tokenAmount.toString(), 18)
       });
+      
+      // Get the existing transactions from localStorage
+      let transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+  
+      // Add the new transaction to the array
+      transactions.push(tx);
+  
+      // Save the updated array back to localStorage
+      localStorage.setItem('transactions', JSON.stringify(transactions));
+  
       setTransactionDetails(tx);
     } catch (err) {
       console.error(err);
     }
   };
+  
 
   const handleViewMovementsClick = () => {
     setShowSentTable(!showSentTable);
@@ -153,7 +155,11 @@ export default function BridgeForm() {
           )}
         </div>
       </div>
-      <div className="flex justify-end w-full">
+      <div className="flex justify-between w-full">
+        <Button size={"lg"} variant='outline' className="mt-5 flex items-center gap-2 self-end" onClick={handleViewMovementsClick}>
+          {showSentTable ? 'Hide claims' : 'Show claims'}
+          {showSentTable ? <ChevronUpIcon className="size-4" /> : <ChevronDownIcon className="size-4" />}
+        </Button>
         <Button size={"lg"} className="mt-5 flex items-center gap-2 self-end" onClick={handleCreateLinkClick}>
           Bridge
           <ChevronRightIcon className="size-4" />
@@ -228,7 +234,7 @@ export default function BridgeForm() {
           </div>        
         </div>        
       )}
-      {showSentTable && <SentTable />}
+      {showSentTable && <ClaimsTable />}
     </section>
   );
 }
