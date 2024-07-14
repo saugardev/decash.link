@@ -1,15 +1,26 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Button } from '@/components/ui/button';
+import { useReadContract } from 'wagmi';
+import { linksContractABI, linksContractAddress } from '@/config/constants';
 
 interface CurrencyConverterProps {
   onValueChange: (usdAmount: number, tokenAmount: number) => void;
 }
 
 const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ onValueChange }) => {
-  const tokenPriceInUSD = 0.02959; // Example token price
+
+  const { data } = useReadContract({
+    address: linksContractAddress,
+    abi: linksContractABI,
+    functionName: 'readPrice',
+  });
+
   const [tokenAmount, setTokenAmount] = useState<number>(0);
   const [usdAmount, setUsdAmount] = useState<number>(0);
   const [isUsd, setIsUsd] = useState<boolean>(true);
+
+  // Transform the token price from 18 decimals to a normal number
+  const tokenPriceInUSD = data ? parseFloat((parseFloat(data.toString()) / 1e18).toFixed(8)) : 0.02959; // Default to example price if no data
 
   useEffect(() => {
     if (isUsd) {
