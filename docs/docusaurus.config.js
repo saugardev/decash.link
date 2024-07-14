@@ -9,7 +9,7 @@ const config = {
  
   title: 'DeCash',
   tagline: 'DeCash documentation',
-  favicon: 'img/decash-icon-black.ico',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://docs.decash.link',

@@ -78,6 +78,20 @@ const sidebars = {
       label: 'Swap chain',
       id: 'user-guide/swap-chain',
     },
+
+    //Section "Chronicle"
+    {
+      type: 'html',
+      className: 'sidebar-title',
+      value: 'CHRONICLE',
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Implementing Chronicle',
+      id: 'chronicle/implementing-chronicle',
+    },
+      
   ],
 };
 
